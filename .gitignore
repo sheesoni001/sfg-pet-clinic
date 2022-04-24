@@ -3,6 +3,7 @@
 sfg-pet-clinic.iml
 # Log file
 *.log
+HELP.md
 
 # BlueJ files
 *.ctxt
