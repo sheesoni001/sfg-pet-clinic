@@ -7,7 +7,7 @@ import guru.springframwork.sfgpetclinic.services.OwnerService;
 import java.util.Set;
 
 public class OwnerServiceMap extends AbstractMapService<Owner,Long>
-        implements CrudService<Owner,Long>
+        implements OwnerService
     {
 
         @Override
@@ -35,4 +35,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long>
         }
 
 
+        @Override
+        public Owner findByLastName(String lastName) {
+            return null;
+        }
     }
