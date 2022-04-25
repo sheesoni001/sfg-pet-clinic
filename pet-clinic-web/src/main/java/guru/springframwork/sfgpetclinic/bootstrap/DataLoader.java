@@ -1,14 +1,12 @@
 package guru.springframwork.sfgpetclinic.bootstrap;
 
 import guru.springframwork.sfgpetclinic.map.OwnerServiceMap;
-import guru.springframwork.sfgpetclinic.map.PetServiceMap;
 import guru.springframwork.sfgpetclinic.map.VetServiceMap;
 import guru.springframwork.sfgpetclinic.model.Owner;
-import guru.springframwork.sfgpetclinic.model.Pet;
 import guru.springframwork.sfgpetclinic.model.Vet;
 import guru.springframwork.sfgpetclinic.services.OwnerService;
-import guru.springframwork.sfgpetclinic.services.PetService;
 import guru.springframwork.sfgpetclinic.services.VetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +16,17 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-   public DataLoader()
-   {
-       ownerService =new OwnerServiceMap();
-       vetService =new VetServiceMap();
-   }
+    @Autowired
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
+    }
+//    public DataLoader()
+//    {
+//        ownerService =new OwnerServiceMap();
+//        vetService =new VetServiceMap();
+//    }
+
 
     @Override
     public void run(String... args) throws Exception {
