@@ -1,0 +1,11 @@
+package guru.springframwork.sfgpetclinic.services;
+
+import java.util.Set;
+
+public interface CrudService<T,ID> {
+    Set<T> finall();
+    T save(T object);
+    T findById(ID id);
+    void delete(T object);
+    void deleteById(ID id);
+}
