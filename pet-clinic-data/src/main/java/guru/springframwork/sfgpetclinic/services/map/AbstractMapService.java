@@ -1,4 +1,4 @@
-package guru.springframwork.sfgpetclinic.map;
+package guru.springframwork.sfgpetclinic.services.map;
 
 import guru.springframwork.sfgpetclinic.model.BaseEntity;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,7 @@
 package guru.springframwork.sfgpetclinic.bootstrap;
 
 import guru.springframwork.sfgpetclinic.model.*;
-import guru.springframwork.sfgpetclinic.services.OwnerService;
-import guru.springframwork.sfgpetclinic.services.PetTypeService;
-import guru.springframwork.sfgpetclinic.services.SpecialityService;
-import guru.springframwork.sfgpetclinic.services.VetService;
+import guru.springframwork.sfgpetclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,14 +15,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 //    public DataLoader()
 //    {
@@ -92,9 +91,16 @@ public class DataLoader implements CommandLineRunner {
         finosCat.setBirthdate(LocalDate.now());
         finosCat.setPetTYpe(savedCatPetType);
         owner2.getPets().add(finosCat);
-
-
         ownerService.save(owner2);
+
+        Visit visit =new Visit();
+        visit.setPet(finosCat);
+        visit.setDate(LocalDate.now());
+        visit.setDescription("Sneezy kitty");
+
+        visitService.save(visit);
+
+
         System.out.println("Loaded Owners");
         Vet vet1 = new Vet();
 
